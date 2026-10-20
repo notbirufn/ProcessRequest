@@ -16,6 +16,6 @@ FEngineVersion::Current -> "40 53 48 83 EC ? 65 48 8B 04 25 ? ? ? ? B9 ? ? ? ? 4
 FCurlHttpRequest::ProcessRequest -> "40 55 53 56 57 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 45 33 FF 48 8D 05"
 
 
-$ Off
+# Off
 
 FCurlHttpRequest::URL -> 0x278

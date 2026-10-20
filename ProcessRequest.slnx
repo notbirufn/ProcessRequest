@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="ProcessRequest/ProcessRequest.vcxproj" />
+  <Project Path="ProcessRequest/ProcessRequest.vcxproj" Id="6dc20019-7454-4273-b61e-22110bec5072" />
 </Solution>

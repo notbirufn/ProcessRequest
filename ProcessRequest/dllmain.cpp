@@ -3,11 +3,8 @@
 #include <MinHook.h>
 #include <Memcury.h>
 
-#include "Containers/UnrealString.h"
 #include "Misc/EngineVersion.h"
 #include "Curl/CurlHttp.h"
-
-#define WILDCARD UINT8_MAX
 
 void* FMemory::Malloc(SIZE_T Count, uint32 Alignment)
 {
@@ -44,7 +41,7 @@ const FEngineVersion& FEngineVersion::Current()
 	static const FEngineVersion& (*FEngineVersion__Current)() = nullptr;
 
 	if (!FEngineVersion__Current)
-		FEngineVersion__Current = Memcury::Scanner::FindStringRef(TEXT("unreal-v%i-%s.dmp")).ScanFor({ 0xE8, WILDCARD, WILDCARD, WILDCARD, WILDCARD }, false).RelativeOffset(1).GetAs<decltype(FEngineVersion__Current)>();
+		FEngineVersion__Current = Memcury::Scanner::FindStringRef(TEXT("unreal-v%i-%s.dmp")).ScanFor({ 0xE8 }, false).RelativeOffset(1).GetAs<decltype(FEngineVersion__Current)>();
 
 	return FEngineVersion__Current();
 }
@@ -81,7 +78,7 @@ DWORD WINAPI MainThread(LPVOID lpParameter)
 
 	//const FEngineVersion& CurrentVersion = FEngineVersion::Current();
 	//MessageBox(NULL, *CurrentVersion->GetBranchDescriptor(), TEXT("Sakurite"), MB_OK);
-	// 
+
 	// "40 55 53 56 57 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 45 33 FF 48 8D 05"
 
 	LPVOID ProcessRequest = Memcury::Scanner::FindStringRef(TEXT("STAT_FCurlHttpRequest_ProcessRequest")).ScanFor({ 0x40, 0x55, 0x53, 0x56, 0x57, 0x41, 0x56, 0x41, 0x57 }, false).GetAs<LPVOID>();

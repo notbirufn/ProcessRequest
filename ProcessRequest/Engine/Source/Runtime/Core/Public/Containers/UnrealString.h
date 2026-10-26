@@ -73,6 +73,13 @@ public:
         return *this;
     }
 
+    FORCEINLINE FString operator+(const TCHAR* Str) const
+    {
+        FString Result(*this);
+        Result += Str;
+        return Result;
+    }
+
 public:
     FORCEINLINE bool operator==(const TCHAR* Other) const
     {

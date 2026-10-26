@@ -12,13 +12,10 @@ void FCurlHttpRequest::OnProcessRequest()
 	if (!Scheme)
 		return;
 
-	const TCHAR* Host = Scheme + 3;
-	const TCHAR* Path = FCString::Strchr(Host, TEXT('/'));
+	const TCHAR* PathAndQuery = FCString::Strchr(Scheme + 3, TEXT('/'));
 
-	URL = TEXT("http://127.0.0.1:3551");
+	if (!PathAndQuery)
+		return;
 
-	if (Path)
-		URL += Path;
-
-	SetURL(URL);
+	SetURL(FString(TEXT("http://127.0.0.1:3551")) + PathAndQuery);
 }

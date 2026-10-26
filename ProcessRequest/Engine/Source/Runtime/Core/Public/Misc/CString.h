@@ -4,26 +4,6 @@
 
 struct FCString
 {
-	static TCHAR* Strcat(TCHAR* Dest, SIZE_T DestCount, const TCHAR* Src)
-	{
-		TCHAR* String = Dest;
-
-		while (*String != 0 && DestCount > 1)
-		{
-			String++;
-			DestCount--;
-		}
-
-		while (*Src != 0 && DestCount > 1)
-		{
-			*String++ = *Src++;
-			DestCount--;
-		}
-
-		*String = 0;
-		return Dest;
-	}
-
 	static int32 Strcmp(const TCHAR* String1, const TCHAR* String2)
 	{
 		return _tcscmp(String1, String2);

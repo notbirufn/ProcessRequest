@@ -1,9 +1,8 @@
 #include <Windows.h>
 
-#include <MinHook.h>
-#include <Memcury.h>
+#include "MinHook.h"
+#include "Memcury.h"
 
-#include "Misc/EngineVersion.h"
 #include "Curl/CurlHttp.h"
 
 void* FMemory::Malloc(SIZE_T Count, uint32 Alignment)

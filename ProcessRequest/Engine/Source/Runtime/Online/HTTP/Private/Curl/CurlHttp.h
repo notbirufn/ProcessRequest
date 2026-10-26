@@ -12,13 +12,12 @@ namespace
 class FCurlHttpRequest /*: public IHttpThreadedRequest*/
 {
 public:
-	FString GetURL() const;
+	static bool ProcessRequest(FCurlHttpRequest* CurlHttpRequest);
 
-	void SetURL(const FString& InURL);
+public:
+	FString GetURL() const /*override*/;
+	void SetURL(const FString& InURL) /*override*/;
 
 public:
 	void OnProcessRequest();
-
-public:
-	static bool ProcessRequest(FCurlHttpRequest* CurlHttpRequest);
 };

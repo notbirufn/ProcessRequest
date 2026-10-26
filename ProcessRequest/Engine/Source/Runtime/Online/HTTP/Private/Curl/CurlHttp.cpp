@@ -19,8 +19,6 @@ void FCurlHttpRequest::OnProcessRequest()
 
 	if (Path)
 		URL += Path;
-	else
-		URL += TEXT("/");
 
 	SetURL(URL);
 }

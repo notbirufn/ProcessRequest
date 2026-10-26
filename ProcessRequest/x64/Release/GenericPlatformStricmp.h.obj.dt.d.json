@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\github\\notbirufn\\processrequest\\processrequest\\engine\\source\\runtime\\core\\public\\genericplatform\\genericplatformstricmp.h",
+        "ProvidedModule": "",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

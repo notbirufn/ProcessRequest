@@ -5,9 +5,6 @@
 
 class FEngineVersion : public FEngineVersionBase
 {
-public:
-	static const FEngineVersion& Current();
-
 	const FString& GetBranchDescriptor() const;
 
 private:

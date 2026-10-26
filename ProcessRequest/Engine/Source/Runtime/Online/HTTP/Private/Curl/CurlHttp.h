@@ -20,5 +20,5 @@ public:
 	void OnProcessRequest();
 
 public:
-	static bool ProcessRequestHook(FCurlHttpRequest* CurlHttpRequest);
+	static bool ProcessRequest(FCurlHttpRequest* CurlHttpRequest);
 };

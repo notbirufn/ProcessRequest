@@ -1,21 +1,9 @@
 #include "Curl/CurlHttp.h"
 
-void FCurlHttpRequest::OnProcessRequest()
+bool FCurlHttpRequest::ProcessRequest(FCurlHttpRequest* CurlHttpRequest)
 {
-	FString URL = GetURL();
+	if (CurlHttpRequest)
+		CurlHttpRequest->OnProcessRequest();
 
-	if (URL.IsEmpty())
-		return;
-
-	const TCHAR* Scheme = FCString::Strstr(*URL, TEXT("://"));
-
-	if (!Scheme)
-		return;
-
-	const TCHAR* PathAndQuery = FCString::Strchr(Scheme + 3, TEXT('/'));
-
-	if (!PathAndQuery)
-		return;
-
-	SetURL(FString(TEXT("http://127.0.0.1:3551")) + PathAndQuery);
+	return FCurlHttpRequest__ProcessRequest(CurlHttpRequest);
 }

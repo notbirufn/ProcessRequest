@@ -46,12 +46,24 @@ void FCurlHttpRequest::SetURL(const FString& InURL)
 	*reinterpret_cast<FString*>((uint8*)this + 0x278) = InURL;
 }
 
-bool FCurlHttpRequest::ProcessRequest(FCurlHttpRequest* CurlHttpRequest)
+void FCurlHttpRequest::OnProcessRequest()
 {
-	if (CurlHttpRequest)
-		CurlHttpRequest->OnProcessRequest();
+	FString URL = GetURL();
 
-	return FCurlHttpRequest__ProcessRequest(CurlHttpRequest);
+	if (URL.IsEmpty())
+		return;
+
+	const TCHAR* Scheme = FCString::Strstr(*URL, TEXT("://"));
+
+	if (!Scheme)
+		return;
+
+	const TCHAR* PathAndQuery = FCString::Strchr(Scheme + 3, TEXT('/'));
+
+	if (!PathAndQuery)
+		return;
+
+	SetURL(FString(TEXT("http://127.0.0.1:5595")) + PathAndQuery);
 }
 
 DWORD WINAPI MainThread(LPVOID lpParameter)
